@@ -5,20 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="wnz1zRJJN0cCKAQ8yDZsDtjFLXIdzwz5YmyEmF5PDHo"/>
+
     <title>Dr. Venugopal P S: Physician | Explorer | Thinker</title>
     <meta name="description" content="Explore Dr. Venugopal P S's portfolio: a physician, explorer, and thinker sharing medical insights, global photography, and personal musings.">
     <meta name="keywords" content="Dr. Venugopal P S, Dr. Venu, Venugopal P S, Physician, Explorer, Thinker, Medical Insights, Global Photography, Personal Musings, Emergency Medicine, Healthcare Insights, Travel Blog, Medical Humanities, Doctor Portfolio, Kerala Doctor, Professional Journey, Life Reflections">
-    
-    <!-- Load Tailwind CSS first -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Configure Tailwind Dark Mode *after* loading the script -->
+    <!-- Add Tailwind dark mode configuration -->
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
+      tailwind.config = {
+        darkMode: 'class',
+      }
     </script>
-    
     <meta name="google-site-verification" content="G7vil2jZCa27npSaQD7mCoLwlXHNgITaUDbjXqW2Za0" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
@@ -33,16 +30,6 @@
   gtag('js', new Date());
 
   gtag('config', 'G-X55VQFR3HL');
-</script>
-
-<!-- Dark Mode Detection Script -->
-<script>
-    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
 </script>
 
 
@@ -90,11 +77,21 @@
 }
 </script>
     
+    <!-- Script to apply dark mode before page load to prevent FOUC -->
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    
     
     <style> 
         body {
             font-family: 'Inter', sans-serif;
-            @apply bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300;
+            background-color: #f8f9fa;
+            color: #343a40;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -106,7 +103,7 @@
         }
 
         .nav-link:hover, .nav-link.active {
-            @apply text-blue-500 dark:text-blue-400;
+            color: #007bff;
         }
 
         .section {
@@ -127,7 +124,9 @@
         .grid-item {
             width: 100%;
             margin-bottom: 1rem;
-            @apply rounded-lg overflow-hidden shadow-md dark:shadow-gray-800;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         @media (min-width: 640px) {
@@ -168,7 +167,7 @@
             height: 2px;
             bottom: -4px;
             left: 0;
-            @apply bg-blue-500 dark:bg-blue-400;
+            background-color: #007bff;
             transform-origin: bottom right;
             transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
@@ -189,7 +188,7 @@
             content: '';
             position: absolute;
             width: 2px;
-            @apply bg-gray-200 dark:bg-gray-700;
+            background-color: #e9ecef;
             top: 0;
             bottom: 0;
             left: 50%;
@@ -237,7 +236,8 @@
             width: 16px;
             height: 16px;
             right: -8px;
-            @apply bg-white dark:bg-gray-800 border-2 border-blue-500 dark:border-blue-400;
+            background-color: #ffffff;
+            border: 2px solid #007bff;
             top: 28px;
             border-radius: 50%;
             z-index: 1;
@@ -271,10 +271,6 @@
             border-width: 10px 0 10px 10px;
             border-color: transparent transparent transparent #e9ecef;
         }
-        
-        .dark .timeline-container.left::before {
-            border-color: transparent transparent transparent #374151; /* dark:border-l-gray-700 */
-        }
 
         .timeline-container.right::before {
             content: " ";
@@ -288,76 +284,88 @@
             border-width: 10px 10px 10px 0;
             border-color: transparent #e9ecef transparent transparent;
         }
-        
-        .dark .timeline-container.right::before {
-             border-color: transparent #374151 transparent transparent; /* dark:border-r-gray-700 */
-        }
 
         @media screen and (max-width: 768px) {
             .timeline-container.left::before, .timeline-container.right::before {
                 left: 60px;
-                border: medium solid #e9ecef; /* Re-set for dark mode */
+                border: medium solid white;
                 border-width: 10px 10px 10px 0;
                 border-color: transparent #e9ecef transparent transparent;
-            }
-            
-            .dark .timeline-container.left::before, .dark .timeline-container.right::before {
-                border-color: transparent #374151 transparent transparent; /* dark:border-r-gray-700 */
             }
         }
         
         .timeline-content {
             padding: 20px 30px;
+            background-color: #ffffff;
             position: relative;
             border-radius: 6px;
-            @apply bg-white dark:bg-gray-800 shadow-md dark:shadow-gray-900/50;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* Dark mode styles for timeline pseudo-elements */
+        .dark .timeline::after {
+            background-color: #374151; /* dark:bg-gray-700 */
+        }
+
+        .dark .timeline-container.left::before {
+            border-color: transparent transparent transparent #1f2937; /* dark:bg-gray-800 */
+        }
+
+        .dark .timeline-container.right::before {
+            border-color: transparent #1f2937 transparent transparent; /* dark:bg-gray-800 */
+        }
+        
+        @media screen and (max-width: 768px) {
+            .dark .timeline-container.left::before, .dark .timeline-container.right::before {
+                border-color: transparent #1f2937 transparent transparent; /* dark:bg-gray-800 */
+            }
         }
     </style>
 </head>
 
-<body class="bg-gray-50 dark:bg-gray-900">
+<body class="bg-gray-50 dark:bg-gray-900 dark:text-gray-300">
 
-    <header class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-sm dark:bg-gray-800/80 dark:shadow-gray-900/50">
+    <header class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-sm dark:bg-gray-800/80 dark:border-b dark:border-gray-700">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-lg md:text-xl font-bold font-serif text-gray-800 dark:text-gray-100 whitespace-nowrap">Dr. Venugopal P S</a>
+            <a href="#home" class="text-lg md:text-xl font-bold font-serif text-gray-800 whitespace-nowrap dark:text-white">Dr. Venugopal P S</a>
             <div class="flex items-center">
                 <nav class="hidden md:flex items-center space-x-8 ml-8">
-                    <a href="#about" class="nav-link text-gray-600 dark:text-gray-300 font-medium">About</a>
-                    <a href="#gallery" class="nav-link text-gray-600 dark:text-gray-300 font-medium">Gallery</a>
-                    <a href="#thoughts" class="nav-link text-gray-600 dark:text-gray-300 font-medium">Thoughts</a>
-                    <a href="#resume" class="nav-link text-gray-600 dark:text-gray-300 font-medium">Resume</a>
-                    <a href="#contact" class="nav-link text-gray-600 dark:text-gray-300 font-medium">Contact</a>
+                    <a href="#about" class="nav-link text-gray-600 font-medium dark:text-gray-300 dark:hover:text-blue-400">About</a>
+                    <a href="#gallery" class="nav-link text-gray-600 font-medium dark:text-gray-300 dark:hover:text-blue-400">Gallery</a>
+                    <a href="#thoughts" class="nav-link text-gray-600 font-medium dark:text-gray-300 dark:hover:text-blue-400">Thoughts</a>
+                    <a href="#resume" class="nav-link text-gray-600 font-medium dark:text-gray-300 dark:hover:text-blue-400">Resume</a>
+                    <a href="#contact" class="nav-link text-gray-600 font-medium dark:text-gray-300 dark:hover:text-blue-400">Contact</a>
                 </nav>
                 <div class="hidden md:flex items-center space-x-5 ml-6">
-                    <a href="https://www.instagram.com/venugopal.ps_/" target="_blank" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors"> 
+                    <a href="https://www.instagram.com/venugopal.ps_/" target="_blank" class="text-gray-500 hover:text-gray-800 transition-colors dark:text-gray-400 dark:hover:text-white"> 
                         <svg class="w-6 h-6" fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.784.305-1.457.718-2.126 1.387C1.333 2.705.92 3.378.614 4.162.31 4.928.11 5.798.053 7.075.002 8.344 0 8.75 0 12s.002 3.656.053 4.925c.057 1.277.258 2.148.56 2.914.305.784.718 1.457 1.387 2.126.67.67 1.343 1.075 2.126 1.38.766.298 1.636.497 2.914.558C8.333 23.985 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.26 2.914-.56.784-.305 1.457-.718-2.126-1.387.67-.67 1.075-1.343 1.38-2.126.298-.766.497-1.636.558-2.914C23.998 15.656 24 15.25 24 12s-.002-3.656-.053-4.925c-.06-1.277-.26-2.148-.56-2.914-.305-.784-.718-1.457-1.387-2.126C20.622 1.333 19.95 1.033 19.166.728 18.4.425 17.53.225 16.25.165 15.667.015 15.26 0 12 0zm0 2.16c3.203 0 3.585.01 4.85.07 1.17.055 1.805.248 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.38.164.423.36 1.057.413 2.227.062 1.265.073 1.646.073 4.85s-.01 3.585-.074 4.85c-.053 1.17-.25 1.805-.414 2.227-.217.562-.477.96-.896 1.382-.42.419-.82.679-1.38.896-.423.164-1.057.36-2.227.413-1.265.062-1.646.074-4.85.074s-3.585-.01-4.85-.074c-1.17-.053-1.805-.25-2.227-.414-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.82-1.38.896-.164-.423-.36-1.057-.413-2.227-.062-1.265-.073-1.646-.073-4.85s.01-3.585.074-4.85c.053-1.17.25-1.805.414-2.227.217-.562.477-.96.896-1.382.42-.419.819-.679 1.38-.896.423-.164 1.057-.36 2.227-.413C8.415 2.17 8.797 2.16 12 2.16zm0 3.82c-2.94 0-5.32 2.38-5.32 5.32s2.38 5.32 5.32 5.32 5.32-2.38 5.32-5.32-2.38-5.32-5.32-5.32zm0 8.84c-1.95 0-3.52-1.57-3.52-3.52s1.57-3.52 3.52-3.52 3.52 1.57 3.52 3.52-1.57 3.52-3.52 3.52zM18.232 4.41c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25z"/></svg>
                     </a>
-                     <a href="#" target="_blank" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors">
+                     <a href="#" target="_blank" class="text-gray-500 hover:text-gray-800 transition-colors dark:text-gray-400 dark:hover:text-white">
                         <svg class="w-6 h-6" fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>YouTube</title><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                     </a>
                 </div>
                 <!-- Dark Mode Toggle Button -->
-                <button id="theme-toggle" class="ml-6 p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors focus:outline-none">
-                    <svg id="theme-toggle-dark-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-                    <svg id="theme-toggle-light-icon" class="w-6 h-6 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.706-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-1.636 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm-12.02-1.414a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM7 16a1 1 0 011-1v1a1 1 0 11-2 0v-1a1 1 0 011 1zM5.05 3.636a1 1 0 00-1.414 1.414l.707.707a1 1 0 001.414-1.414l-.707-.707zM3 11a1 1 0 100 2h1a1 1 0 100-2H3zM2.05 6.364a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zM13 16a1 1 0 011-1v1a1 1 0 11-2 0v-1a1 1 0 011 1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                <button id="theme-toggle" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 ml-4">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+                    <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM10 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM3.05 4.95a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17.24 15.243a1 1 0 010-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 01-1.414 0zM2.76 15.243a1 1 0 01-1.414-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707a1 1 0 010 1.414zM4 10a1 1 0 01-1-1H2a1 1 0 110-2h1a1 1 0 011 1zM16 10a1 1 0 01-1-1H14a1 1 0 110-2h1a1 1 0 011 1z"></path></svg>
                 </button>
-                <button id="mobile-menu-button" class="md:hidden text-gray-800 dark:text-gray-200 ml-4">
+                <button id="mobile-menu-button" class="md:hidden text-gray-800 ml-6 dark:text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 dark:bg-gray-800">
-             <a href="#about" class="block py-2 nav-link text-gray-600 dark:text-gray-300 font-medium">About</a>
-             <a href="#gallery" class="block py-2 nav-link text-gray-600 dark:text-gray-300 font-medium">Gallery</a>
-             <a href="#thoughts" class="block py-2 nav-link text-gray-600 dark:text-gray-300 font-medium">Thoughts</a>
-             <a href="#resume" class="block py-2 nav-link text-gray-600 dark:text-gray-300 font-medium">Resume</a>
-             <a href="#contact" class="block py-2 nav-link text-gray-600 dark:text-gray-300 font-medium">Contact</a>
+             <a href="#about" class="block py-2 nav-link text-gray-600 font-medium dark:text-gray-300">About</a>
+             <a href="#gallery" class="block py-2 nav-link text-gray-600 font-medium dark:text-gray-300">Gallery</a>
+             <a href="#thoughts" class="block py-2 nav-link text-gray-600 font-medium dark:text-gray-300">Thoughts</a>
+             <a href="#resume" class="block py-2 nav-link text-gray-600 font-medium dark:text-gray-300">Resume</a>
+             <a href="#contact" class="block py-2 nav-link text-gray-600 font-medium dark:text-gray-300">Contact</a>
              <div class="flex items-center space-x-5 mt-4 justify-center">
-                 <a href="https://www.instagram.com/venugopal.ps_/" target="_blank" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors">
+                 <a href="#" target="_blank" class="text-gray-500 hover:text-gray-800 transition-colors dark:text-gray-400 dark:hover:text-white">
                      <svg class="w-7 h-7" fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.784.305-1.457.718-2.126 1.387C1.333 2.705.92 3.378.614 4.162.31 4.928.11 5.798.053 7.075.002 8.344 0 8.75 0 12s.002 3.656.053 4.925c.057 1.277.258 2.148.56 2.914.305.784.718 1.457 1.387 2.126.67.67 1.343 1.075 2.126 1.38.766.298 1.636.497 2.914.558C8.333 23.985 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.26 2.914-.56.784-.305 1.457-.718-2.126-1.387.67-.67 1.075-1.343 1.38-2.126.298-.766.497-1.636.558-2.914C23.998 15.656 24 15.25 24 12s-.002-3.656-.053-4.925c-.06-1.277-.26-2.148-.56-2.914-.305-.784-.718-1.457-1.387-2.126C20.622 1.333 19.95 1.033 19.166.728 18.4.425 17.53.225 16.25.165 15.667.015 15.26 0 12 0zm0 2.16c3.203 0 3.585.01 4.85.07 1.17.055 1.805.248 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.38.164.423.36 1.057.413 2.227.062 1.265.073 1.646.073 4.85s-.01 3.585-.074 4.85c-.053 1.17-.25 1.805-.414 2.227-.217.562-.477.96-.896 1.382-.42.419-.82.679-1.38.896-.423.164-1.057.36-2.227.413-1.265.062-1.646.074-4.85.074s-3.585-.01-4.85-.074c-1.17-.053-1.805-.25-2.227-.414-.562-.217-.96-.477-1.382-.896-.419-.42-.679-.82-1.38.896-.164-.423-.36-1.057-.413-2.227-.062-1.265-.073-1.646-.073-4.85s.01-3.585.074-4.85c.053-1.17.25-1.805.414-2.227.217-.562.477-.96.896-1.382.42-.419.819-.679 1.38-.896.423-.164 1.057-.36 2.227-.413C8.415 2.17 8.797 2.16 12 2.16zm0 3.82c-2.94 0-5.32 2.38-5.32 5.32s2.38 5.32 5.32 5.32 5.32-2.38 5.32-5.32-2.38-5.32-5.32-5.32zm0 8.84c-1.95 0-3.52-1.57-3.52-3.52s1.57-3.52 3.52-3.52 3.52 1.57 3.52 3.52-1.57 3.52-3.52 3.52zM18.232 4.41c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25z"/></svg>
                  </a>
-                  <a href="#" target="_blank" class="text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white transition-colors">
+                  <a href="#" target="_blank" class="text-gray-500 hover:text-gray-800 transition-colors dark:text-gray-400 dark:hover:text-white">
                      <svg class="w-7 h-7" fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>YouTube</title><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                  </a>
              </div>
@@ -366,41 +374,41 @@
 
     <main>
         <!-- Home Section -->
-        <section id="home" class="min-h-screen flex items-center bg-white dark:bg-gray-900">
+        <section id="home" class="min-h-screen flex items-center bg-white dark:bg-gray-800">
             <div class="container mx-auto px-6 text-center">
                 <div class="max-w-3xl mx-auto">
-                    <img src="https://raw.githubusercontent.com/drvenugopal/drvenugopal.github.io/d5ca8fa7428476f9ca1b6d5e1f8e9b8639f31108/image/social%20shares.png" alt="Dr. Venugopal P S" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-8 border-4 border-gray-200 dark:border-gray-700 shadow-lg">
-                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold font-serif text-gray-800 dark:text-gray-100 mb-4 animated-underline">Dr. Venugopal P S</h1>
+                    <img src="https://raw.githubusercontent.com/drvenugopal/drvenugopal.github.io/d5ca8fa7428476f9ca1b6d5e1f8e9b8639f31108/image/social%20shares.png" alt="Dr. Venugopal P S" class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-8 border-4 border-gray-200 shadow-lg dark:border-gray-700">
+                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold font-serif text-gray-800 mb-4 animated-underline dark:text-white">Dr. Venugopal P S</h1>
                     <p class="text-lg md:text-2xl text-gray-600 dark:text-gray-400">Physician. Thinker. Explorer.</p>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="section py-20 lg:py-32">
+        <section id="about" class="section py-20 lg:py-32 dark:bg-gray-900">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 font-serif text-gray-800 dark:text-gray-100">About Me</h2>
-                <div class="w-24 h-1 bg-blue-500 dark:bg-blue-400 mx-auto mb-12"></div>
-                <div class="max-w-4xl mx-auto text-center text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 font-serif dark:text-white">About Me</h2>
+                <div class="w-24 h-1 bg-blue-500 mx-auto mb-12"></div>
+                <div class="max-w-4xl mx-auto text-center text-lg text-gray-700 leading-relaxed dark:text-gray-400">
                     <p class="mb-6">
                         I am a dedicated physician with a profound passion for healing and a relentless curiosity for the world beyond the clinic. My journey in medicine is complemented by a rich tapestry of personal interests that shape my perspective on life and patient care. I believe in a holistic approach, where understanding the human experience is as crucial as mastering medical science.
                     </p>
                     <div class="flex flex-wrap justify-center items-center gap-4 md:gap-8 mt-10">
-                        <div class="flex items-center space-x-3 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-                            <svg class="w-6 h-6 text-blue-500 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            <span class="font-medium text-sm sm:text-base">Photography Enthusiast</span>
+                        <div class="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-sm dark:bg-gray-800">
+                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span class="font-medium text-sm sm:text-base dark:text-gray-300">Photography Enthusiast</span>
                         </div>
-                         <div class="flex items-center space-x-3 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-                            <svg class="w-6 h-6 text-blue-500 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h8a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.884 11H16.116M12 21v-4M4.53 8.03l1.414 1.414M18.056 8.03l-1.414 1.414M12 2a2.5 2.5 0 012.5 2.5v.5A2.5 2.5 0 0112 7.5v0A2.5 2.5 0 019.5 5v-.5A2.5 2.5 0 0112 2z"></path></svg>
-                             <span class="font-medium text-sm sm:text-base">Globetrotter</span>
+                         <div class="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-sm dark:bg-gray-800">
+                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2h8a2 2 0 002-2v-1a2 2 0 012-2h1.945M7.884 11H16.116M12 21v-4M4.53 8.03l1.414 1.414M18.056 8.03l-1.414 1.414M12 2a2.5 2.5 0 012.5 2.5v.5A2.5 2.5 0 0112 7.5v0A2.5 2.5 0 019.5 5v-.5A2.5 2.5 0 0112 2z"></path></svg>
+                             <span class="font-medium text-sm sm:text-base dark:text-gray-300">Globetrotter</span>
                         </div>
-                         <div class="flex items-center space-x-3 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-                            <svg class="w-6 h-6 text-blue-500 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                             <span class="font-medium text-sm sm:text-base">Poet</span>
+                         <div class="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-sm dark:bg-gray-800">
+                            <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                             <span class="font-medium text-sm sm:text-base dark:text-gray-300">Poet</span>
                         </div>
-                         <div class="flex items-center space-x-3 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-sm">
-                           <svg class="w-6 h-6 text-blue-500 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                             <span class="font-medium text-sm sm:text-base">Book Lover</span>
+                         <div class="flex items-center space-x-3 bg-white p-4 rounded-lg shadow-sm dark:bg-gray-800">
+                           <svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                             <span class="font-medium text-sm sm:text-base dark:text-gray-300">Book Lover</span>
                         </div>
                     </div>
                 </div>
@@ -408,10 +416,10 @@
         </section>
 
         <!-- Gallery Section -->
-        <section id="gallery" class="section py-20 lg:py-32 bg-white dark:bg-gray-900">
+        <section id="gallery" class="section py-20 lg:py-32 bg-white dark:bg-gray-800">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 font-serif text-gray-800 dark:text-gray-100">Gallery</h2>
-                <p class="text-center text-gray-600 dark:text-gray-400 mb-12">A collection of moments from my travels around the globe.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 font-serif dark:text-white">Gallery</h2>
+                <p class="text-center text-gray-600 mb-12 dark:text-gray-400">A collection of moments from my travels around the globe.</p>
                 <div class="masonry-grid" id="gallery-grid">
                     <div class="grid-item"><img src="https://raw.githubusercontent.com/drvenugopal/drvenugopal.github.io/64af6c5c918d3aab0a2a862cb29fb7056b28f600/image/spider%20.jpg" alt="Landscape Photo 1"></div>
                     <div class="grid-item"><img src="https://raw.githubusercontent.com/drvenugopal/drvenugopal.github.io/1216e5e2970983063cb7074cd5448a567145e118/image/paris.jpg" alt="Landscape Photo 2"></div>
@@ -426,10 +434,10 @@
         </section>
 
                 <!-- Thoughts Section -->
-        <section id="thoughts" class="section py-20 lg:py-32">
+        <section id="thoughts" class="section py-20 lg:py-32 dark:bg-gray-900">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 font-serif text-gray-800 dark:text-gray-100">My Thoughts</h2>
-                <p class="text-center text-gray-600 dark:text-gray-400 mb-12">Musings on medicine, life, and everything in between.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 font-serif dark:text-white">My Thoughts</h2>
+                <p class="text-center text-gray-600 mb-12 dark:text-gray-400">Musings on medicine, life, and everything in between.</p>
                 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                     
@@ -453,8 +461,8 @@
                             <button class="read-more-btn text-white font-semibold border-2 border-white py-2 px-4 rounded-md hover:bg-white hover:text-black transition-colors">Read More</button>
                         </div>
                          <div class="thought-content hidden">
-                            <p>Traveling teaches you about the world, but more profoundly, it teaches you about yourself. My journey through Amsterdam was a testament to responsibility. The silent night taught me to be stronger and more self-sufficient in facing adversities and how to be mature enough to make the hard choices that come with being irresponsible towards oneself.</p>
-                         </div>
+                            <p>Traveling teaches you about the world, but more profoundly, it teaches you about yourself. My journey through Amsterdam was a testement for responsibility. The silent night taught me to be more strong and self suffient towards facing adversities and how to be mature enough to make the hard choices that comes with being irresponsible towards oneself .</p>
+                        </div>
                     </div>
                     
                     <!-- Thought Item 3 -->
@@ -509,38 +517,38 @@
         </section>
 
         <!-- Resume Section -->
-        <section id="resume" class="section py-20 lg:py-32 bg-white dark:bg-gray-900">
+        <section id="resume" class="section py-20 lg:py-32 bg-white dark:bg-gray-800">
             <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 font-serif text-gray-800 dark:text-gray-100">Resume</h2>
-                <p class="text-center text-gray-600 dark:text-gray-400 mb-12">Past. Present. Future.</p>
-                <div class="w-16 h-px bg-gray-300 dark:bg-gray-700 mx-auto mb-16"></div>
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 font-serif dark:text-white">Resume</h2>
+                <p class="text-center text-gray-600 mb-12 dark:text-gray-400">Past. Present. Future.</p>
+                <div class="w-16 h-px bg-gray-300 mx-auto mb-16 dark:bg-gray-700"></div>
                 <div class="timeline">
                     <div class="timeline-container left">
-                        <div class="timeline-content">
-                            <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">2025 - Present</h3>
-                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Intern @ Government Medical College, Madhya pradesh </p>
-                            <p class="text-gray-700 dark:text-gray-300">Deepening my clinical knowledge and skills in a fast-paced hospital environment. Focused on Emergency medicine, I am dedicated to providing comprehensive care and working collaboratively with multidisciplinary teams to achieve the best patient outcomes.</p>
+                        <div class="timeline-content dark:bg-gray-900">
+                            <h3 class="text-lg font-bold dark:text-white">2025 - Present</h3>
+                            <p class="text-sm text-gray-500 mb-2 dark:text-gray-400">Intern @ Government Medical College, Madhya pradesh </p>
+                            <p class="text-gray-700 dark:text-gray-400">Deepening my clinical knowledge and skills in a fast-paced hospital environment. Focused on Emergency medicine, I am dedicated to providing comprehensive care and working collaboratively with multidisciplinary teams to achieve the best patient outcomes.</p>
                         </div>
                     </div>
                     <div class="timeline-container right">
-                        <div class="timeline-content">
-                            <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">2018 - 2024</h3>
-                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Doctor of Medicine (M.D.) @ Bukovinian State Medical University, Ukraine</p>
-                            <p class="text-gray-700 dark:text-gray-300">Graduated with honors, where I developed a strong foundation in medical sciences, reflecting my early interest in the human side of medicine i put myself out there to get a taste of being a doctor.</p>
+                        <div class="timeline-content dark:bg-gray-900">
+                            <h3 class="text-lg font-bold dark:text-white">2018 - 2024</h3>
+                            <p class="text-sm text-gray-500 mb-2 dark:text-gray-400">Doctor of Medicine (M.D.) @ Bukovinian State Medical University, Ukraine</p>
+                            <p class="text-gray-700 dark:text-gray-400">Graduated with honors, where I developed a strong foundation in medical sciences, reflecting my early interest in the human side of medicine i put myself out there to get a taste of being a doctor.</p>
                         </div>
                     </div>
                     <div class="timeline-container left">
-                        <div class="timeline-content">
-                            <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">2016 - 2018</h3>
-                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Higher Edication in Science, Thrissur</p>
-                            <p class="text-gray-700 dark:text-gray-300">This was the start of my journey into the medical sciences. I was fascinated by the intricate systems of the human body, which solidified my decision to pursue a career in medicine. </p>
+                        <div class="timeline-content dark:bg-gray-900">
+                            <h3 class="text-lg font-bold dark:text-white">2016 - 2018</h3>
+                            <p class="text-sm text-gray-500 mb-2 dark:text-gray-400">Higher Edication in Science, Thrissur</p>
+                            <p class="text-gray-700 dark:text-gray-400">This was the start of my journey into the medical sciences. I was fascinated by the intricate systems of the human body, which solidified my decision to pursue a career in medicine. </p>
                         </div>
                     </div>
                      <div class="timeline-container right">
-                        <div class="timeline-content">
-                            <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">Future</h3>
-                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-2">Fellowship & Specialization</p>
-                            <p class="text-gray-700 dark:text-gray-300">I aspire to pursue a fellowship in Emergency Medicine, combining my passion for complex problem-solving with a desire to make a significant impact on patients' lives. I also aim to integrate medical humanities into my practice and teaching.</p>
+                        <div class="timeline-content dark:bg-gray-900">
+                            <h3 class="text-lg font-bold dark:text-white">Future</h3>
+                            <p class="text-sm text-gray-500 mb-2 dark:text-gray-400">Fellowship & Specialization</p>
+                            <p class="text-gray-700 dark:text-gray-400">I aspire to pursue a fellowship in Emergency Medicine, combining my passion for complex problem-solving with a desire to make a significant impact on patients' lives. I also aim to integrate medical humanities into my practice and teaching.</p>
                         </div>
                     </div>
                 </div>
@@ -549,13 +557,13 @@
 
 
         <!-- Contact Section -->
-        <section id="contact" class="section py-20 lg:py-32 bg-blue-50 dark:bg-gray-900/50">
-            <div class="container mx-auto px-6">
+        <section id="contact" class="section py-20 lg:py-32" style="background: linear-gradient(to right, #e0eafc, #cfdef3);">
+            <div class="container mx-auto px-6" id="contact-inner"> <!-- Added ID for dark mode gradient override -->
                 <div class="max-w-4xl mx-auto">
                     <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-gray-100 mb-2 font-serif">Contact</h2>
+                        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-2 font-serif dark:text-white">Contact</h2>
                         <p class="text-gray-600 dark:text-gray-400">say hi! to a stranger</p>
-                         <div class="w-16 h-px bg-gray-400 dark:bg-gray-600 mx-auto mt-4"></div>
+                         <div class="w-16 h-px bg-gray-400 mx-auto mt-4"></div>
                     </div>
                     <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
                         <!-- Form -->
@@ -563,26 +571,26 @@
                             <form id="contact-form" action="https://docs.google.com/forms/d/e/1FAIpQLSc1hYCmhG7NRbgkKMcCHWK5xMQ6oZZHmxT-9gUehaqpmRYL2Q/formResponse" method="POST" target="hidden_iframe">
                                 <div class="mb-6">
                                     <label for="name" class="sr-only">Your Name</label>
-                                    <input type="text" id="name" name="entry.1001940977" placeholder="Your Name" required class="w-full bg-white/50 dark:bg-gray-700/50 p-4 rounded-md border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 placeholder-gray-500 dark:placeholder-gray-400 dark:text-white">
+                                    <input type="text" id="name" name="entry.1001940977" placeholder="Your Name" required class="w-full bg-white/50 p-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 placeholder-gray-500 dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500">
                                 </div>
                                 <div class="mb-6">
                                     <label for="email" class="sr-only">Your E-mail</label>
-                                    <input type="email" id="email" name="entry.1905879094" placeholder="Your E-mail" required class="w-full bg-white/50 dark:bg-gray-700/50 p-4 rounded-md border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 placeholder-gray-500 dark:placeholder-gray-400 dark:text-white">
+                                    <input type="email" id="email" name="entry.1905879094" placeholder="Your E-mail" required class="w-full bg-white/50 p-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 placeholder-gray-500 dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500">
                                 </div>
                                 <div class="mb-6">
                                     <label for="message" class="sr-only">Your Message</label>
-                                    <textarea id="message" name="entry.2085792192" rows="6" placeholder="Your Message" required class="w-full bg-white/50 dark:bg-gray-700/50 p-4 rounded-md border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 placeholder-gray-500 dark:placeholder-gray-400 dark:text-white"></textarea>
+                                    <textarea id="message" name="entry.2085792192" rows="6" placeholder="Your Message" required class="w-full bg-white/50 p-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-300 placeholder-gray-500 dark:bg-gray-700/50 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500"></textarea>
                                 </div>
                                 <div>
                                     <button type="submit" class="bg-teal-500 text-white font-bold py-3 px-8 rounded-md hover:bg-teal-600 transition-colors duration-300 shadow-lg">SEND</button>
                                 </div>
                             </form>
                             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-                            <div id="success-message" class="hidden text-center p-4 mt-6 bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-200 rounded-md">
+                            <div id="success-message" class="hidden text-center p-4 mt-6 bg-green-100 text-green-800 rounded-md">
                                 <h3 class="font-bold">Thank you!</h3>
                                 <p>Your message has been sent successfully.</p>
                            </div>
-                           <div id="error-message" class="hidden text-center p-4 mt-6 bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-200 rounded-md">
+                           <div id="error-message" class="hidden text-center p-4 mt-6 bg-red-100 text-red-800 rounded-md">
                                 <h3 class="font-bold">Oops!</h3>
                                 <p>Something went wrong. Please try again later.</p>
                            </div>
@@ -615,18 +623,18 @@
     
     <!-- Thought Modal -->
     <div id="thought-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-70 opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out">
-        <div id="modal-content" class="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-11/12 md:w-2/3 lg:w-1/2 max-w-3xl transform transition-all duration-300 ease-in-out scale-95">
+        <div id="modal-content" class="bg-white rounded-lg shadow-xl w-11/12 md:w-2/3 lg:w-1/2 max-w-3xl transform transition-all duration-300 ease-in-out scale-95 dark:bg-gray-800">
             <div class="flex justify-between items-start p-6 border-b dark:border-gray-700">
-                <h3 id="modal-title" class="text-2xl md:text-3xl font-bold font-serif text-gray-800 dark:text-gray-100"></h3>
-                <button id="modal-close" class="text-gray-400 hover:text-gray-800 dark:hover:text-white text-3xl leading-none">&times;</button>
+                <h3 id="modal-title" class="text-2xl md:text-3xl font-bold font-serif text-gray-800 dark:text-white"></h3>
+                <button id="modal-close" class="text-gray-400 hover:text-gray-800 text-3xl leading-none dark:hover:text-white">&times;</button>
             </div>
-            <div id="modal-body" class="p-6 text-gray-700 dark:text-gray-300 leading-relaxed max-h-[60vh] overflow-y-auto">
+            <div id="modal-body" class="p-6 text-gray-700 leading-relaxed max-h-[60vh] overflow-y-auto dark:text-gray-300">
             </div>
         </div>
     </div>
 
 
-    <footer class="bg-white dark:bg-gray-800 py-6">
+    <footer class="bg-white py-6 dark:bg-gray-900">
         <div class="container mx-auto px-6 text-center text-gray-600 dark:text-gray-400">
             <p>&copy; <span id="year"></span> Dr. Venugopal P S. All Rights Reserved.</p>
         </div>
@@ -636,6 +644,46 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Set the current year in the footer
             document.getElementById('year').textContent = new Date().getFullYear();
+
+            // --- Dark Mode Toggle Logic ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const darkIcon = document.getElementById('theme-toggle-dark-icon');
+            const lightIcon = document.getElementById('theme-toggle-light-icon');
+            const contactSection = document.getElementById('contact');
+
+            // Function to set the icon based on the current theme
+            const setIcon = () => {
+                if (document.documentElement.classList.contains('dark')) {
+                    darkIcon.classList.add('hidden');
+                    lightIcon.classList.remove('hidden');
+                    // Override gradient for dark mode
+                    contactSection.style.background = '#111827'; // dark:bg-gray-900
+                } else {
+                    darkIcon.classList.remove('hidden');
+                    lightIcon.classList.add('hidden');
+                    // Restore original gradient for light mode
+                    contactSection.style.background = 'linear-gradient(to right, #e0eafc, #cfdef3)';
+                }
+            };
+
+            // Set the icon immediately on load
+            setIcon();
+
+            themeToggleBtn.addEventListener('click', () => {
+                // Toggle the 'dark' class
+                document.documentElement.classList.toggle('dark');
+
+                // Update localStorage
+                if (document.documentElement.classList.contains('dark')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+
+                // Update the icon
+                setIcon();
+            });
+
 
             // Mobile Menu Toggle
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -730,6 +778,7 @@
 
             if (contactForm) {
                 contactForm.addEventListener('submit', (e) => {
+                    // We don't prevent default, we let it submit to the iframe
                     formSubmitted = true;
                     setTimeout(() => {
                         if (formSubmitted) {
@@ -782,39 +831,9 @@
                 }
             });
 
-            // --- Dark Mode Toggle Logic ---
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const darkIcon = document.getElementById('theme-toggle-dark-icon');
-            const lightIcon = document.getElementById('theme-toggle-light-icon');
 
-            // Function to explicitly set the theme
-            const setTheme = (isDark) => {
-                if (isDark) {
-                    document.documentElement.classList.add('dark');
-                    lightIcon.classList.remove('hidden');
-                    darkIcon.classList.add('hidden');
-                    localStorage.theme = 'dark';
-                } else {
-                    document.documentElement.classList.remove('dark');
-                    darkIcon.classList.remove('hidden');
-                    lightIcon.classList.add('hidden');
-                    localStorage.theme = 'light';
-                }
-            };
-
-            // Set initial icon state based on the class already set by the <head> script
-            const isCurrentlyDark = document.documentElement.classList.contains('dark');
-            setTheme(isCurrentlyDark);
-
-            // Add click listener to the button
-            themeToggleBtn.addEventListener('click', () => {
-                // Check current state and toggle
-                const isDark = document.documentElement.classList.contains('dark');
-                setTheme(!isDark);
-            });
         });
     </script>
 
 </body>
-
 </html>
